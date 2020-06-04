@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="table-responsive">
+            <h1>Table</h1>
+            <br />
+
+            <table class="table table-bordered table-striped" id="user_table">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Date</th>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("table.json", function (data) {
+            var table_data = '';
+            $.each(data, function (key, value) {
+                table_data += '<tr>';
+                table_data += '<td>' + value.symbol + '</td>';
+                table_data += '<td>' + value.name + '</td>';
+                table_data += '<td>' + value.city + '</td>';
+                table_data += '<td>' + value.company + '</td>';
+                table_data += '<td>' + value.phone + '</td>';
+                table_data += '<td>' + value.age + '</td>';
+                table_data += '<td>' + value.date + '</td>';
+                table_data += '</tr>';
+            });
+            $('#user_table').append(table_data);
+        })
+    })
+</script>
